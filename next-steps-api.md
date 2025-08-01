@@ -35,7 +35,7 @@
 
 ### 6. Integração com IA
 
-* Implementar client para Hugging Face ou OpenRouter usando Axios.
+* Implementar client paraTogether AI ou Gemini usando Axios.
 * Criar lógica de prompt e parsing da resposta da IA.
 
 ### 7. Validação, Interceptação e Tratamento de Erros
