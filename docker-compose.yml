@@ -1,0 +1,37 @@
+version: '3.9'
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3000'
+    volumes:
+      - ./backend:/app
+    environment:
+      - NODE_ENV=development
+    depends_on: []
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+
+  db:
+    image: sqlite3
+    container_name: sqlite
+    volumes:
+      - ./data:/data
+    command: ["tail", "-f", "/dev/null"] # Mantém o container rodando
+
+networks:
+  default:
+    driver: bridge
