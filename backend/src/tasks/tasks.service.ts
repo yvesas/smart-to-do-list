@@ -3,10 +3,18 @@ import { PrismaTaskRepository } from "./repositories/prisma-task.repository";
 import { CreateTaskDto } from "./dto/create-task.dto";
 import { UpdateTaskDto } from "./dto/update-task.dto";
 import { TaskEntity } from "./task.entity";
+import { AIService } from "../ai/ai.service";
+import { GenerateTasksDto } from "./dto/generate-tasks.dto";
 
 @Injectable()
 export class TasksService {
-  constructor(private readonly taskRepository: PrismaTaskRepository) {}
+  constructor(
+    private readonly taskRepository: PrismaTaskRepository,
+    private readonly aiService: AIService
+  ) {}
+  async generateTasksByAI(dto: GenerateTasksDto) {
+    return this.aiService.generateTasks(dto.prompt);
+  }
 
   async create(createTaskDto: CreateTaskDto): Promise<TaskEntity> {
     return this.taskRepository.create(createTaskDto);
