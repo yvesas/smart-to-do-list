@@ -46,5 +46,80 @@ O Smart To-Do List vai além do CRUD tradicional, permitindo que o usuário desc
 
 ---
 
+## Exemplos de Uso da API
+
+### Criar tarefa manual
+
+```http
+POST /tasks
+Content-Type: application/json
+
+{
+  "title": "Comprar passagens",
+  "description": "Pesquisar voos para o Japão"
+}
+```
+
+### Listar todas as tarefas
+
+```http
+GET /tasks
+```
+
+### Buscar tarefa por ID
+
+```http
+GET /tasks/{id}
+```
+
+### Atualizar tarefa
+
+```http
+PATCH /tasks/{id}
+Content-Type: application/json
+
+{
+  "title": "Comprar passagens aéreas",
+  "isCompleted": true
+}
+```
+
+### Deletar tarefa
+
+```http
+DELETE /tasks/{id}
+```
+
+### Gerar tarefas via IA
+
+```http
+POST /tasks/generate
+Content-Type: application/json
+
+{
+  "prompt": "Planejar uma viagem para o Japão"
+}
+```
+
+**Resposta esperada:**
+
+```json
+[
+  {
+    "title": "Comprar passagens aéreas",
+    "description": "Pesquisar voos e reservar para as datas desejadas"
+  },
+  {
+    "title": "Reservar hospedagem",
+    "description": "Escolher hotéis próximos aos pontos turísticos"
+  },
+  {
+    "title": "Montar roteiro de passeios"
+  }
+]
+```
+
+---
+
 > Para detalhes completos de arquitetura, endpoints e roadmap, consulte os arquivos `PLAN.md` e `project-description.md`.
---- 
+---

@@ -2,7 +2,7 @@
 
 #### Sobre
 
-O objetivo é desenvolver uma "Smart To-Do List", uma lista de tarefas que vai além do CRUD tradicional. A aplicação deverá integrar uma funcionalidade de Inteligência Artificial que, a partir de um objetivo de alto nível descrito pelo usuário (como "planejar uma viagem"), gera automaticamente uma lista de subtarefas acionáveis. Devemos criar uma aplicação completa, desde a API robusta no backend até uma interface reativa no frontend, e pode me ajudar com  sua criatividade na integração com serviços de IA.
+O objetivo é desenvolver uma "Smart To-Do List", uma lista de tarefas que vai além do CRUD tradicional. A aplicação deverá integrar uma funcionalidade de Inteligência Artificial que, a partir de um objetivo de alto nível descrito pelo usuário (como "planejar uma viagem"), gera automaticamente uma lista de subtarefas acionáveis. Devemos criar uma aplicação completa, desde a API robusta no backend até uma interface reativa no frontend.
 
 #### **Stacks Tecnológicas Requeridas**
 
@@ -14,7 +14,7 @@ Nesta primeira versão ter somente acesso direto, sem controle de acesso e ou au
 
 ## **Backend: NestJS com TypeScript**
 
-O backend será o cérebro da aplicação, responsável pela lógica de negócios, persistência de dados e, crucialmente, pela comunicação com a API de Inteligência Artificial. A arquitetura da API (endpoints, métodos, etc.) devem seguir com entity, dtos para class validator, repository, service, controller e module, uso de ORM com Prisma. Deixo para sua sugestão seguir ao a mais da Arquitetura Clean ou não.
+O backend será o cérebro da aplicação, responsável pela lógica de negócios, persistência de dados e, crucialmente, pela comunicação com a API de Inteligência Artificial. A arquitetura da API (endpoints, métodos, etc.) devem seguir com entity, dtos para class validator, repository, service, controller e module, uso de ORM com Prisma.
 
 * **Lógica de Negócios:** Implementar toda a funcionalidade para gerenciar o ciclo de vida de tarefas:
   * Criação
