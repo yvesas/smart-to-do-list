@@ -11,20 +11,21 @@ Uma aplicação de lista de tarefas inteligente que utiliza IA para gerar subtar
 ## Tecnologias Utilizadas
 
 - **Backend:**
+
   - NestJS (TypeScript)
   - Prisma ORM
   - SQLite
   - class-validator, class-transformer
   - Helmet, CORS, express-rate-limit
   - Integração com IA via Axios
-
 - **Frontend:**
+
   - Next.js 14 (TypeScript)
   - Tailwind CSS, shadcn/ui
   - Zustand, Zod, react-hook-form
   - Axios, React Query
-
 - **DevOps:**
+
   - Docker, Docker Compose
   - pnpm (gerenciador de pacotes)
 
@@ -121,5 +122,6 @@ Content-Type: application/json
 
 ---
 
-> Para detalhes completos de arquitetura, endpoints e roadmap, consulte os arquivos `PLAN.md` e `project-description.md`.
+> Para detalhes completos de arquitetura, endpoints e roadmap, consulte os arquivos  `project-description.md`.
+
 ---

@@ -6,6 +6,8 @@ import { ConfigService } from '@nestjs/config';
 import * as dotenv from 'dotenv';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import rateLimit from 'express-rate-limit';
+import { HttpExceptionInterceptor } from './common/interceptors/http-exception.interceptor';
 
 dotenv.config();
 
@@ -13,7 +15,16 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(helmet());
   app.use(cors());
+  app.use(
+    rateLimit({
+      windowMs: 15 * 60 * 1000, // 15 minutes
+      max: 100, // limit each IP to 100 requests per windowMs
+      standardHeaders: true,
+      legacyHeaders: false,
+    }),
+  );
   app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalInterceptors(new HttpExceptionInterceptor());
 
   // Swagger config
   const config = new DocumentBuilder()
