@@ -2,10 +2,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable, Logger } from '@nestjs/common';
-import { AIProvider } from './ai.interface';
+import { AIProvider } from '../ai.interface';
 import TogetherAI from 'together-ai';
-import { TaskPromptBuilder } from './task-prompt.builder';
-import { TasksResponseSchema, Task } from './task.schema';
+import { TaskPromptBuilder } from '../task-prompt.builder';
+import { TasksResponseSchema, Task } from '../task.schema';
 
 @Injectable()
 export class TogetherAIProvider implements AIProvider {
@@ -29,7 +29,7 @@ export class TogetherAIProvider implements AIProvider {
         throw new Error('Failed to generate tasks from Together AI.');
       }
       let text = response.choices[0].message.content;
-      Logger.log('[TOGETHER-AI] Texto gerado:', text);
+      Logger.log(text, '[TOGETHER-AI] Texto gerado:');
 
       if (text.startsWith('```json')) {
         text = text.slice(7, -3).trim();

@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { TogetherAIProvider } from './together-ai.provider';
-import { GeminiProvider } from './gemini.provider';
+import { TogetherAIProvider } from './providers/together-ai.provider';
+import { GeminiProvider } from './providers/gemini.provider';
 import { AIProvider } from './ai.interface';
 
 @Injectable()
