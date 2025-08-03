@@ -5,6 +5,7 @@ import * as cors from 'cors';
 import { ConfigService } from '@nestjs/config';
 import * as dotenv from 'dotenv';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(helmet());
   app.use(cors());
+  app.useGlobalPipes(new ValidationPipe());
 
   // Swagger config
   const config = new DocumentBuilder()
