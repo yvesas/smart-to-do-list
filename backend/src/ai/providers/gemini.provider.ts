@@ -2,10 +2,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable, Logger } from '@nestjs/common';
-import { AIProvider } from './ai.interface';
+import { AIProvider } from '../ai.interface';
 import { GoogleGenAI } from '@google/genai';
-import { TaskPromptBuilder } from './task-prompt.builder';
-import { TasksResponseSchema, Task } from './task.schema';
+import { TaskPromptBuilder } from '../task-prompt.builder';
+import { TasksResponseSchema, Task } from '../task.schema';
 
 @Injectable()
 export class GeminiProvider implements AIProvider {
@@ -23,7 +23,7 @@ export class GeminiProvider implements AIProvider {
       });
       let text =
         response?.text || response?.candidates?.[0]?.content?.parts?.[0]?.text;
-      Logger.log('[GEMINI] Texto gerado:', text);
+      Logger.log(text, '[GEMINI] Texto gerado:');
 
       if (text.startsWith('```json')) {
         text = text.slice(7, -3).trim();

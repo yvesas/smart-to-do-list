@@ -1,5 +1,5 @@
 export interface AIProvider {
   generateTasks(
-    prompt: string
+    prompt: string,
   ): Promise<{ title: string; description?: string }[]>;
 }

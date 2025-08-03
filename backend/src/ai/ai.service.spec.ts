@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import { Test, TestingModule } from '@nestjs/testing';
 import { AIService } from './ai.service';
-import { TogetherAIProvider } from './together-ai.provider';
-import { GeminiProvider } from './gemini.provider';
+import { TogetherAIProvider } from './providers/together-ai.provider';
+import { GeminiProvider } from './providers/gemini.provider';
 import { Logger } from '@nestjs/common';
 
 describe('AIService', () => {
