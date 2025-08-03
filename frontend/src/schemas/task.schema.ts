@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const createTaskSchema = z.object({
+export const CreateTaskSchema = z.object({
   title: z
     .string()
     .min(3, "O título deve ter no mínimo 3 caracteres.")
@@ -11,12 +11,12 @@ export const createTaskSchema = z.object({
     .optional(),
 });
 
-export const generateTasksSchema = z.object({
+export const GenerateTasksSchema = z.object({
   prompt: z
     .string()
     .min(10, "O objetivo deve ter no mínimo 10 caracteres.")
     .max(200, "O objetivo deve ter no máximo 200 caracteres."),
 });
 
-export type CreateTaskInput = z.infer<typeof createTaskSchema>;
-export type GenerateTasksInput = z.infer<typeof generateTasksSchema>;
+export type CreateTaskInput = z.infer<typeof CreateTaskSchema>;
+export type GenerateTasksInput = z.infer<typeof GenerateTasksSchema>;
