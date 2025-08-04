@@ -17,7 +17,7 @@ import { GenerateTasksSchema } from "@/schemas/task.schema";
 import { useTaskStore } from "@/store/task.store";
 
 export function AIPromptForm() {
-  const { generateAndAddTasks, isLoading } = useTaskStore();
+  const { generateTasks, isLoading } = useTaskStore();
   const form = useForm<z.infer<typeof GenerateTasksSchema>>({
     resolver: zodResolver(GenerateTasksSchema),
     defaultValues: {
@@ -26,7 +26,7 @@ export function AIPromptForm() {
   });
 
   function onSubmit(values: z.infer<typeof GenerateTasksSchema>) {
-    generateAndAddTasks({ prompt: values.prompt });
+    generateTasks({ prompt: values.prompt });
     form.reset();
   }
 

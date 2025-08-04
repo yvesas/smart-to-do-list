@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 export class ApiService {
   private api = axios.create({
@@ -9,22 +8,33 @@ export class ApiService {
     },
   });
 
-  public get = async (url: string) => {
-    const response = await this.api.get(url);
+  constructor() {
+    this.api.interceptors.response.use(
+      (response) => response,
+      (error: AxiosError) => {
+        const message = (error.response?.data as { message: string })?.message || error.message;
+        return Promise.reject(new Error(message));
+      }
+    );
+  }
+
+  public get = async <T>(url: string): Promise<T> => {
+    const response = await this.api.get<T>(url);
     return response.data;
   };
 
-  public post = async (url: string, data: any) => {
-    const response = await this.api.post(url, data);
+  public post = async <T>(url: string, data: unknown): Promise<T> => {
+    const response = await this.api.post<T>(url, data);
     return response.data;
   };
 
-  public patch = async (url: string, data: any) => {
-    const response = await this.api.patch(url, data);
+  public patch = async <T>(url: string, data: unknown): Promise<T> => {
+    const response = await this.api.patch<T>(url, data);
     return response.data;
   };
 
-  public delete = async (url: string) => {
-    await this.api.delete(url);
+  public delete = async <T>(url: string): Promise<T> => {
+    const response = await this.api.delete<T>(url);
+    return response.data;
   };
 }

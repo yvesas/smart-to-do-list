@@ -4,29 +4,15 @@ import { CreateTaskInput, GenerateTasksInput } from "@/schemas/task.schema";
 
 const api = new ApiService();
 
-const getTasks = async (): Promise<Task[]> => {
-  const { data } = await api.get("/tasks");
-  return data;
-};
+const getTasks = () => api.get<Task[]>("/tasks");
 
-const createTask = async (task: CreateTaskInput): Promise<Task> => {
-  const { data } = await api.post("/tasks", task);
-  return data;
-};
+const createTask = (task: CreateTaskInput) => api.post<Task>("/tasks", task);
 
-const generateTasks = async (input: GenerateTasksInput): Promise<Task[]> => {
-  const { data } = await api.post("/tasks/generate", input);
-  return data;
-};
+const generateTasks = (input: GenerateTasksInput) => api.post<Task[]>("/tasks/generate", input);
 
-const updateTask = async (id: string, task: Partial<Task>): Promise<Task> => {
-  const { data } = await api.patch(`/tasks/${id}`, task);
-  return data;
-};
+const updateTask = (id: string, task: Partial<Task>) => api.patch<Task>(`/tasks/${id}`, task);
 
-const deleteTask = async (id: string): Promise<void> => {
-  await api.delete(`/tasks/${id}`);
-};
+const deleteTask = (id: string) => api.delete<void>(`/tasks/${id}`);
 
 export const taskService = {
   getTasks,
