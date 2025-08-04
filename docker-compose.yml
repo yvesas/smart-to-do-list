@@ -1,4 +1,3 @@
-version: '3.9'
 services:
   backend:
     build:
@@ -8,9 +7,13 @@ services:
       - '3001:3001'
     volumes:
       - ./backend:/app
+      - /app/node_modules
+      - db_data:/app/prisma
     environment:
       - NODE_ENV=development
-    depends_on: []
+      - DATABASE_URL=file:./prisma/dev.db
+    networks:
+      - default
 
   frontend:
     build:
@@ -20,17 +23,17 @@ services:
       - '3000:3000'
     volumes:
       - ./frontend:/app
+      - /app/node_modules
     environment:
       - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://backend:3001
     depends_on:
       - backend
+    networks:
+      - default
 
-  db:
-    image: sqlite3
-    container_name: sqlite
-    volumes:
-      - ./data:/data
-    command: ["tail", "-f", "/dev/null"] # Mantém o container rodando
+volumes:
+  db_data:
 
 networks:
   default:
