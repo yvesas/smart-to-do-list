@@ -1,18 +1,19 @@
 # Dockerfile para NestJS (Backend)
-FROM node:20-alpine
+FROM node:22-alpine
+RUN npm install -g pnpm
 
 WORKDIR /app
 
-RUN npm install -g pnpm
-
-COPY package.json pnpm-lock.yaml* ./
-
+COPY package.json pnpm-lock.yaml ./
+COPY prisma ./prisma/
 RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-RUN pnpm build
+RUN npx prisma generate && \
+    pnpm run build
 
-EXPOSE 3000
+EXPOSE 3001
 
-CMD ["pnpm", "start:dev"]
+# CMD ["pnpm", "start:dev"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

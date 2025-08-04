@@ -1,0 +1,32 @@
+backend-1   | [Nest] 34  - 08/04/2025, 11:50:07 AM     LOG [NestApplication] Nest application successfully started +1ms
+backend-1   | Swagger disponível em http://localhost:3001/api
+backend-1   | /app/generated/prisma/runtime/library.js:67
+backend-1   | ${er(e)}`}var of=N("prisma:client:engines:resolveEnginePath"),sf=()=>new RegExp("runtime[\\\\/]library\\.m?js$");async function bl(e,r){let t={binary:process.env.PRISMA_QUERY_ENGINE_BINARY,library:process.env.PRISMA_QUERY_ENGINE_LIBRARY}[e]??r.prismaPath;if(t!==void 0)return t;let{enginePath:n,searchedLocations:i}=await af(e,r);if(of("enginePath",n),n!==void 0&&e==="binary"&&Ai(n),n!==void 0)return r.prismaPath=n;let o=await ir(),s=r.generator?.binaryTargets??[],a=s.some(d=>d.native),l=!s.some(d=>d.value===o),u=__filename.match(sf())===null,c={searchedLocations:i,generatorBinaryTargets:s,generator:r.generator,runtimeBinaryTarget:o,queryEngineName:El(e,o),expectedLocation:St.default.relative(process.cwd(),r.dirname),errorStack:new Error().stack},p;throw a&&l?p=gl(c):l?p=ml(c):u?p=fl(c):p=hl(c),new T(p,r.clientVersion)}async function af(e,r){let t=await ir(),n=[],i=[r.dirname,St.default.resolve(__dirname,".."),r.generator?.output?.value??__dirname,St.default.resolve(__dirname,"../../../.prisma/client"),"/tmp/prisma-engines",r.cwd];__filename.includes("resolveEnginePath")&&i.push(gs());for(let o of i){let s=El(e,t),a=St.default.join(o,s);if(n.push(o),yl.default.existsSync(a))return{enginePath:a,searchedLocations:n}}return{enginePath:void 0,searchedLocations:n}}function El(e,r){return e==="library"?Gt(r,"fs"):`query-engine-${r}${r==="windows"?".exe":""}`}var mo=C(Li());function wl(e){return e?e.replace(/".*"/g,'"X"').replace(/[\s:\[]([+-]?([0-9]*[.])?[0-9]+)/g,r=>`${r[0]}5`):""}function xl(e){return e.split(`
+backend-1   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+backend-1   | 
+backend-1   | PrismaClientInitializationError: Prisma Client could not locate the Query Engine for runtime "linux-musl-arm64-openssl-3.0.x".
+backend-1   | 
+backend-1   | This happened because Prisma Client was generated for "darwin-arm64", but the actual deployment required "linux-musl-arm64-openssl-3.0.x".
+backend-1   | Add "linux-musl-arm64-openssl-3.0.x" to `binaryTargets` in the "schema.prisma" file and run `prisma generate` after saving it:
+backend-1   | 
+backend-1   | generator client {
+backend-1   |   provider      = "prisma-client-js"
+backend-1   |   binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+backend-1   | }
+backend-1   | 
+backend-1   | The following locations have been searched:
+backend-1   |   /app/generated/prisma
+backend-1   |   /Users/Yves/Workspace/smart-to-do-list/backend/generated/prisma
+backend-1   |   /app/.prisma/client
+backend-1   |   /tmp/prisma-engines
+backend-1   |   /app/prisma
+backend-1   |     at bl (/app/generated/prisma/runtime/library.js:67:805)
+backend-1   |     at async Object.loadLibrary (/app/generated/prisma/runtime/library.js:114:7966)
+backend-1   |     at async Qr.loadEngine (/app/generated/prisma/runtime/library.js:115:448)
+backend-1   |     at async Qr.instantiateLibrary (/app/generated/prisma/runtime/library.js:114:11869) {
+backend-1   |   clientVersion: '6.13.0',
+backend-1   |   errorCode: undefined,
+backend-1   |   retryable: undefined
+backend-1   | }
+backend-1   | 
+backend-1   | Node.js v20.19.4
